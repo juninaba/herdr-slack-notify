@@ -1,0 +1,25 @@
+id = "agent-slack-notify"
+name = "Agent Slack Notify"
+version = "0.1.0"
+min_herdr_version = "0.7.0"
+description = "Send a Slack message when an agent finishes or gets blocked."
+platforms = ["linux", "macos", "windows"]
+
+[[actions]]
+id = "toggle"
+title = "Toggle Slack notify"
+command = ["node", "toggle.mjs"]
+
+[[actions]]
+id = "enable"
+title = "Enable Slack notify"
+command = ["node", "toggle.mjs", "on"]
+
+[[actions]]
+id = "disable"
+title = "Disable Slack notify"
+command = ["node", "toggle.mjs", "off"]
+
+[[events]]
+on = "pane.agent_status_changed"
+command = ["node", "notify.mjs"]
